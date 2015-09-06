@@ -1,0 +1,83 @@
+
+.form-signin {
+    padding:15px 0px;
+    margin-right: 0px;
+    width: 300px;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox, .form-signin-txt{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-signin .form-signin-heading{
+    font-size: 20px;
+}
+.form-signin-input{
+    margin-top: 20px;
+    position: relative;
+    height: 40px;
+}
+
+.errortips {
+    position: absolute;
+    font-size: 12px;
+    background: #f5c3bf;
+    border: 1px solid #edbcb9;
+    color: #e75c00;
+    padding: 0 10px;
+    margin: -0px 0;
+    width: inherit;
+    line-height: 20px;
+    z-index: 997;
+}
+
+.form-signup{
+    min-width: 610px;
+
+}
+.form-tips{
+    position:absolute;
+    font-size: 12px;
+    font-weight: normal;
+    background: #f8f8f8;
+    border: 1px solid #e6e6e6;
+    color: #696969;
+    width: 250px;
+    height: 40px;
+    line-height:15px;
+    padding: 3px 5px ;
+    right: 33px;
+    z-index: 997;
+}
+
+.form-signup-errortips {
+    position: absolute;
+    font-size: 12px;
+    font-weight: normal;
+    background: #f5c3bf;
+    border: 1px solid #edbcb9;
+    color: #e75c00;
+    width: 250px;
+    height: 40px;
+    line-height:15px;
+    padding: 3px 5px ;
+    right: 33px;
+    z-index: 997;
+}
+
+.form-input-short{
+    width: 100px;
+}
+
+.btn-checkno{
+    width:90px;
+    height: 100%;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.form-row-signup{
+    width: 200px;
+    margin-left: 120px;
+}
+

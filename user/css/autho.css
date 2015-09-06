@@ -1,0 +1,40 @@
+.heading-small{
+    font-size: 16px;
+    font-weight: 700;
+}
+.row{
+    margin: 10px 0;
+    padding: 0 5px;
+}
+.row.line{
+    height: 30px;
+}
+.row.file{
+    height: auto;
+}
+
+.autho-label{
+
+    float: left;
+    text-align: right;
+    width: 120px;
+    padding-right: 10px;
+}
+
+.autho-context{
+    /*width: 400px;*/
+    padding:0 10px;
+}
+
+.autho-state{
+    float: left;
+    text-align: left;
+}
+
+.autho-thumb{
+    max-width: 300px;
+}
+
+.autho-offset{
+    margin-left: 140px;
+}

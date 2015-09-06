@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{width:100%;height:500px;}
+        p{margin-left:5px; font-size:14px;}
+    </style>
+    <!--引用百度地图-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=etkDCv66X7g1RodkRiZGYmAA">
+    </script>
+    <title>
+        控件使用
+    </title>
+    <!--
+设计样式
+container容器：占50%大小
+-->
+    <style type="text/css">
+        #container{
+            width:50%;
+            height:50%;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<input type="hidden" id="loadClass" value="<s:property value='#parameters.loadClass'/>">
+<input type="hidden" id="routeType" value="<s:property value='#parameters.routeType'/>">
+<input type="hidden" id="userRoleSpecial" value="<s:property value='#session.user.role'/>">
+<input type="hidden" value="<s:property value='#session.user.username'/>" id="username">
+
+
+
+
+
+
+<script type="text/javascript">
+    var map = new BMap.Map("container");//在container容器中创建一个地图,参数container为div的id属性;
+    var mapPoint = new BMap.Point(116.417854,39.921988);//定位
+    var marker = new BMap.Marker(mapPoint);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    map.centerAndZoom(mapPoint, 11);  // 初始化地图,设置中心点坐标和地图级别
+    map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title : "海底捞王府井店" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+    }
+    var infoWindow = new BMap.InfoWindow("地址：北京市东城区王府井大街88号乐天银泰百货八层", opts);  // 创建信息窗口对象
+    marker.addEventListener("click", function() {
+        map.openInfoWindow(infoWindow, mapPoint); //开启信息窗口
+    })
+</script>
+</body>
+</html>  
