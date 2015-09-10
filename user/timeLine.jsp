@@ -13,7 +13,7 @@
 	<div class="container-fluid" ng-controller="timeLineController">
 	<input type="hidden" id="docid" value="<s:property value='#parameters.docid'/>">
 		<div class="row">
-		<div class='col-sm-2 col-sm-offset-1'>
+		<div class='col-sm-3 col-sm-offset-1'>
 		<div class="timeLine">
 			<div class="tlEnd"><div class="tlLine"></div></div>
 			<div class="tlCurrent" ng-click="showStep(-1)"><div class="tlCurrentImg"></div><div><font ng-bind="data.currentStepName"></font></div><div class="tlLine"></div></div>
@@ -21,44 +21,13 @@
 			<div class="tlStart"><div class="tlStartImg"></div></div>
 		</div>
 		</div>
-		<div class="col-sm-7"  ng-if="showCurrent">
+		<div class="col-sm-7"  ng-show="showCurrent" class="{{show.showCurrent}}">
 			<h3 ng-bind="data.currentStepName"></h3>
-			<form class="form-horizontal" role="form">
-				<div class="form-group" ng-if="formShow.name">
-					<label class="control-label col-sm-4" ng-bind="'name'|translate"></label>
-					<div class="col-sm-7">
-						<input type="text" ng-model="input.name.value"/>
-					</div>    
-				</div>
-				<div class="form-group" ng-if="formShow.weight">
-					<label class="control-label col-sm-4" ng-bind="'weight'|translate"></label>
-					<div class="col-sm-7">
-						<input type="text" ng-model="input.weight.value"/>
-					</div>    
-				</div>
-				<div class="form-group" ng-if="formShow.volume">
-					<label class="control-label col-sm-4" ng-bind="'volume'|translate"></label>
-					<div class="col-sm-7">
-						<input type="text" ng-model="input.volume.value"/>
-					</div>    
-				</div>
-				<div class="form-group" ng-if="formShow.packing">
-				  		<label class="control-label col-sm-4" ng-bind="'packing'|translate"></label>
-					  	<div class="col-sm-3">
-				            <select required class="form-control" ng-init="initPackStyle()" ng-model="input.packing.value" ng-options="pack.id as pack[name] for pack in packingStyle">
-				            <option value="" ng-bind="'PleaseChoose'|translate"></option>
-					        </select>
-				      	</div>
-				      	<div class="col-sm-3" ng-if="input.packing.value<1"><input type="text" required ng-model="input.packingStyleOther"></div>    
-				</div>
-				<div class="form-group" ng-if="formShow.sub">
-					<div class="col-sm-7">
-						<button role="button" ng-click="subForm()" ng-bind="'update'|translate"></button>
-					</div>    
-				</div>
+			<form class="form-horizontal" role="form" id="currentForm">
 			</form>
+			<button class="btn col-sm-offset-3" ng-click="subForm()" ng-if="showReady" ng-bind="'submit'|translate"></button>
 		</div>
-		<div class="col-sm-7" ng-if="!showCurrent">
+		<div class="col-sm-7" ng-show="!showCurrent" class="{{show.showCurrentFalse}}">
 			<h3 ng-bind="step.specificTimeLinePhase.stepName"></h3>
 			<table>
 				<tr><td ng-bind="'UpdateTime'|translate"></td><td ng-bind="step.specificTimeLine.updateTime"></td></tr>

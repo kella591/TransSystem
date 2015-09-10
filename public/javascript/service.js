@@ -6,6 +6,7 @@
     	if(navigator.appName=="Microsoft Internet Explorer" && (navigator.appVersion.match(/7./i)=="7."||navigator.appVersion.match(/8./i)=="8.")){
     		alert(msg);
     	}else{
+    		
     		swal(msg,type);
     	}
     };
@@ -50,9 +51,10 @@
             };
 
         return {
-            doPost: function(url, data, callback) {
+            doPost: function(url, data, callback,asy) {
                 data.locale = $.cookie("language")||"cn";
             	$.ajax({
+            		async:!!!asy,
                     type: "POST",
                     url: url,
                     data: $.param(data),

@@ -26,7 +26,16 @@
     });
 </script>
 <![endif]-->
-<!--[if gt IE 8]><![endif]-->
+<!--[if IE]>
+<script type="text/javascript" src='<s:url value="../public/library/javascript/ieBetter.js"></s:url>'></script>
+<![endif]-->
+<!--[if lt IE 8]>
 <link rel="stylesheet" type="text/css" href='<s:url value="../public/library/css/sweetalert.css"></s:url>'>
 <script type="text/javascript" src='<s:url value="../public/library/javascript/sweetalert.min.js"></s:url>'></script>
-
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href='<s:url value="../public/library/css/sweetalert.css"></s:url>'>
+<script type="text/javascript" src='<s:url value="../public/library/javascript/sweetalert.min.js"></s:url>'></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href='<s:url value="../public/library/css/sweetalert.css"></s:url>'>
+<script type="text/javascript" src='<s:url value="../public/library/javascript/sweetalert.min.js"></s:url>'></script>

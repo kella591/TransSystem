@@ -6,7 +6,6 @@
 <s:include value="../public/include/header.jsp"></s:include>
  <script type="text/javascript" src='<s:url value="../public/javascript/service.js"></s:url>'></script>
 	<script type="text/javascript" src='<s:url value="./js/aptitudeController.js"></s:url>'></script>
-	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/55/sjckzedf/lanrenzhijia.css">
 </head>
 <body>
 	<s:include value="../public/include/navbar.jsp"></s:include>

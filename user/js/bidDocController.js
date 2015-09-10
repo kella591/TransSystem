@@ -30,19 +30,20 @@
 			 if(docid>0){
 				 httpService.doPost('./struts/viewBidDoc.action',{"biddoc.id":docid}, function(ret){
 					 initDocData(ret.biddoc);
-					 initTempData();
 					 $scope.tempData.biddoc = $.extend({},ret.biddoc);
+					 initTempData();
 					 initDataList();
 					 initBooleanData();
 					 $scope.goodList  = ret.goods;
 					 checkSubmit(ret.biddoc.boxedType.value===1||ret.biddoc.boxedType.value===7);
-				});
+				},true);
 			 }else{
 				 initDocData();
 				 initDataList();
 				 initBooleanData();
 				 initTempData();
 				 $scope.tempData.biddoc={};
+				 $scope.tempData.ngHide=!!!$scope.tempData.biddoc.departPort?'ng-show':'ng-hide';
 			 }
 		 };
 		 
@@ -187,6 +188,16 @@
 					 'state':false,
 					 'msg':""
 			 };
+			 $scope.tempData.showSelect = {
+					 	'departPort':!!$scope.tempData.biddoc&&!!$scope.tempData.biddoc.departPort?'ng-hide':'ng-show',
+						'arrivalPort':!!$scope.tempData.biddoc&&!!$scope.tempData.biddoc.arrivalPort?'ng-hide':'ng-show',
+						'transportMode':!!$scope.tempData.biddoc&&!!$scope.tempData.biddoc.transportMode?'ng-hide':'ng-show',
+						'transporType':!!$scope.tempData.biddoc&&!!$scope.tempData.biddoc.transporType?'ng-hide':'ng-show',
+						'boxedType':!!$scope.tempData.biddoc&&!!$scope.tempData.biddoc.boxedType?'ng-hide':'ng-show',
+						'containerType':!!$scope.tempData.biddoc&&!!$scope.tempData.biddoc.containerType?'ng-hide':'ng-show',
+						'goodsClass2':!!$scope.tempData.biddoc&&!!$scope.tempData.biddoc.goodsClass2?'ng-hide':'ng-show',
+						'trueGoodsClass2':!!$scope.tempData.biddoc&&!!$scope.tempData.biddoc.trueGoodsClass2?'ng-hide':'ng-show'
+			};
 		 };
 		 
 		 //select date

@@ -12,8 +12,8 @@
 	<s:include value="../public/include/navbar.jsp"></s:include>
 	<input type="hidden" id="docid" value="<s:property value='#parameters.docid'/>">
 	<div>
-	<div class="container-fluid"  ng-controller="addBidBookCtrl">
-		<div class="row-fluid">
+	<div class="container"  ng-controller="addBidBookCtrl">
+		<div class="row">
 			<div class="col-sm-7 col-sm-offset-3">
 			  <form class="form-horizontal" role="form">
 			  	<div class="form-group">
@@ -21,7 +21,7 @@
 			           <div ng-if="!!tempData.biddoc.departPort" class="col-sm-3">
 			           		<font ng-bind="docData.departPort[name]"></font>
 			           </div>
-		            <div ng-show="!!!tempData.biddoc.departPort" >
+		            <div ng-show="!!!tempData.biddoc.departPort" class="{{tempData.showSelect.departPort}}">
 		            	<div class="col-sm-3">
 				            <select required class="form-control" ng-model="tempData.port.departure.zero" ng-options="port.id as port.cnName for port in dataList.portZeroLevel" ng-change="selectPort(0,0)">
 				            <option value="">-请选择-</option>
@@ -44,7 +44,7 @@
 		            <div ng-if="!!tempData.biddoc.arrivalPort" class="col-sm-3">
 		            	<font ng-bind="docData.arrivalPort[name]"></font>
 		            </div>
-		            <div ng-show="!!!tempData.biddoc.arrivalPort">
+		            <div ng-show="!!!tempData.biddoc.arrivalPort" class="{{tempData.showSelect.arrivalPort}}">
 		            <div class="col-sm-3">
 			            <select required class="form-control" ng-model="tempData.port.arrival.zero" ng-options="port.id as port.cnName for port in dataList.portZeroLevel" ng-change="selectPort(1,0)">
 			            <option value="">-请选择-</option>
@@ -68,14 +68,14 @@
 			            
 			            <div class="col-sm-9">
 			           		<font ng-if="!!tempData.biddoc.departureDate" ng-bind="tempData.biddoc.departureDate"></font>
-			          	 	<input ng-show="!!!tempData.biddoc.departureDate" required type="date" ng-model="docData.departureDate" format-date ng-change="selectDate()"></input>
+			          	 	<input ng-if="!!!tempData.biddoc.departureDate" required type="date" ng-model="docData.departureDate" format-date ng-change="selectDate()"></input>
 				      	</div>
 			   </div>
 			    <div class="form-group">
 		            <label class="control-label col-sm-2">到达日期:</label>
 		            <div class="col-sm-9">
 		            	<font  ng-if="!!tempData.biddoc.arrivalDate" ng-bind="docData.arrivalDate"></font>
-		           		<input ng-show="!!!tempData.biddoc.arrivalDate" type="date" ng-model="docData.arrivalDate" format-date ng-change="selectDate()"></input>
+		           		<input ng-if="!!!tempData.biddoc.arrivalDate" type="date" ng-model="docData.arrivalDate" format-date ng-change="selectDate()"></input>
 			      	</div>
 			   </div>
 			   
@@ -83,7 +83,7 @@
 		            <label class="control-label col-sm-2">船期:</label>
 		            <div class="col-sm-9">
 		            	<font ng-if="!!tempData.biddoc.transportTime" ng-bind="docData.transportTime">&nbsp;天</font>
-		           		<input ng-show="!!!tempData.biddoc.departureDate" type="number" ng-model="docData.transportTime">&nbsp;天</input>
+		           		<input ng-if="!!!tempData.biddoc.departureDate" type="number" ng-model="docData.transportTime">&nbsp;天</input>
 			      	</div>
 			   </div>
 			   
@@ -91,7 +91,7 @@
 		            <label class="control-label col-sm-2">有效期:</label>
 		            <div class="col-sm-3">
 		            	<font ng-if="!!tempData.biddoc.validateTime" ng-bind="docData.validateTime"></font>
-		            	<select ng-show="!!!tempData.biddoc.validateTime" required class="form-control" ng-model="docData.validateTime" ng-options="time.value as time.label for time in dataList.validateTime">
+		            	<select ng-if="!!!tempData.biddoc.validateTime" required class="form-control" ng-model="docData.validateTime" ng-options="time.value as time.label for time in dataList.validateTime">
 			             <option value="">-请选择-</option>
 				      	</select>
 			      	</div>
@@ -101,14 +101,14 @@
 		            <label class="control-label col-sm-2">到款日期:</label>
 		            <div class="col-sm-9">
 		            	<font ng-if="!!tempData.biddoc.paymentDate" ng-bind="docData.paymentDate"></font>
-		            	<input ng-show="!!!tempData.biddoc.paymentDate" required type="date" ng-model="docData.paymentDate" format-date></input>
+		            	<input ng-if="!!!tempData.biddoc.paymentDate" required type="date" ng-model="docData.paymentDate" format-date></input>
 			      	</div>
 			   </div>
 			   <div class="form-group">
 		            <label class="control-label col-sm-2">运输模式:</label>
 		            <div class="col-sm-3">
 		            	<font ng-if="!!tempData.biddoc.transportMode" ng-bind="docData.transportMode[name]"></font>
-		            	<select ng-show="!!!tempData.biddoc.transportMode" required class="form-control" ng-model="docData.transportModeID" ng-options="mode.id as mode[name] for mode in dataList.transMode">
+		            	<select ng-show="!!!tempData.biddoc.transportMode" required class="form-control {{tempData.showSelect.transportMode}}" ng-model="docData.transportModeID" ng-options="mode.id as mode[name] for mode in dataList.transMode">
 				            <option value="">-请选择-</option>
 						</select>
 			      	</div>
@@ -117,7 +117,7 @@
 				  		<label class="control-label col-sm-2">货运方式:</label>
 					  		<div class="col-sm-3">
 				            	<font ng-if="!!tempData.biddoc.transportType" ng-bind="docData.transportType.name"></font>
-				            	<select ng-show="!!!tempData.biddoc.transportType" required class="form-control" ng-model="docData.transportType" ng-options="trans as trans.name for trans in dataList.transType">
+				            	<select ng-show="!!!tempData.biddoc.transportType" required class="form-control {{tempData.showSelect.transporType}}" ng-model="docData.transportType" ng-options="trans as trans.name for trans in dataList.transType">
 					             <option value="">-请选择-</option>
 					            </select>
 				      	</div>
@@ -126,7 +126,7 @@
 				  		<label class="control-label col-sm-2">装柜方式:</label>
 					  	<div class="col-sm-3">
 				            	<font ng-if="!!tempData.biddoc.boxedType" ng-bind="docData.boxedType"></font>
-				            	 <select ng-show="!!!tempData.biddoc.boxedType" required class="form-control" ng-model="docData.boxedType" ng-options="trans.class as trans.name for trans in dataList.boxType[docData.transportType.value]" ng-change="selectType()">
+				            	 <select ng-show="!!!tempData.biddoc.boxedType" required class="form-control {{tempData.showSelect.boxedType}}" ng-model="docData.boxedType" ng-options="trans.class as trans.name for trans in dataList.boxType[docData.transportType.value]" ng-change="selectType()">
 						            <option value="">-请选择-</option>
 								</select>
 				      	</div>    
@@ -136,7 +136,7 @@
 				  		<label class="control-label col-sm-2">集装箱类别:</label>
 				  		<div class="col-sm-3">
 				  			<font ng-if="!!tempData.biddoc.container" ng-bind="docData.container[name]"></font>
-					  		<select ng-show="!!!tempData.biddoc.container" required class="form-control" ng-model="docData.containerID" ng-options="container.cnName for container in dataList.containerType" ng-change="selectContainer()">
+					  		<select ng-show="!!!tempData.biddoc.container" required class="form-control {{tempData.showSelect.containerType}}" ng-model="docData.containerID" ng-options="container.cnName for container in dataList.containerType" ng-change="selectContainer()">
 				         	   <option value="">-请选择-</option>
 					        </select>
 					     </div>
@@ -184,7 +184,7 @@
 					        </select>
 				      	</div>
 				      	<div class="col-sm-3">			      		
-				            <select  required class="form-control" ng-model="goodData.goodsClass2ID" ng-options="goodC.cnName for goodC in dataList.goodsClassList2" ng-change="selectGoodsClass(3)">
+				            <select  required class="form-control {{tempData.showSelect.goodsClass2}}" ng-model="goodData.goodsClass2ID" ng-options="goodC.cnName for goodC in dataList.goodsClassList2" ng-change="selectGoodsClass(3)">
 				             <option value="">-请选择-</option>
 					      	</select>
 				      	</div>	        
@@ -209,7 +209,7 @@
 					        </select>
 				      	</div>
 				      	<div class="col-sm-3">			      		
-				            <select  required class="form-control" ng-model="goodData.trueGoodsClassID2" ng-options="goodC.cnName for goodC in dataList.trueGoodsClassList2">
+				            <select  required class="form-control {{tempData.showSelect.trueGoodsClass2}}" ng-model="goodData.trueGoodsClassID2" ng-options="goodC.cnName for goodC in dataList.trueGoodsClassList2">
 				             <option value="">-请选择-</option>
 					      	</select>
 				      	</div>	        

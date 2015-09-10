@@ -64,7 +64,7 @@ function changeLan(type){
 				<s:elseif test="#session.user.role.toString().contains('TRANSPORT')||#session.user.role.toString().contains('承运商')">
 					<!--li id="menu-shipper"><a href='<s:url value="../shipper/shipper.jsp"></s:url>' ng-bind="'UserCenter' | translate"></a></li-->
 					<!--<li id="menu-user"><a href='<s:url value="../shipper/user.jsp"></s:url>' ng-bind="'UserCenter' | translate"></a></li>-->
-					<li id="menu-shipper"><a href='<s:url value="../shipper/viewAllBidDocList.jsp"></s:url>' ng-bind="'ViewAll' | translate"></a></li>
+					<li id="menu-shipper"><a href='<s:url value="../user/viewAllBidDocList.jsp"></s:url>' ng-bind="'ViewAll' | translate"></a></li>
 					<li id="menu-createRoute"><a href='<s:url value="../user/createRoute.jsp"></s:url>' ng-bind="'CreateRoute' | translate"></a></li>
 				</s:elseif>
 				<s:elseif test="#session.user.role.toString().contains('ADMIN')||#session.user.role.toString().contains('管理员')">
